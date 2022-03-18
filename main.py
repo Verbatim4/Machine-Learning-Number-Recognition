@@ -63,6 +63,7 @@ def train_model(train_images, train_labels, test_images, test_labels):
 		keras.layers.Dense(128, activation="relu"),
 		keras.layers.Dense(10, activation="softmax")
 	])
+	
 	model.compile(optimizer="adam", loss="sparse_categorical_crossentropy", metrics=["accuracy"])
 	model.fit(train_images, train_labels, epochs=25)
 
@@ -77,7 +78,6 @@ def train_model(train_images, train_labels, test_images, test_labels):
 
 
 def show_prediction(prediction, test_images):
-	# for _ in range(5):
 	im_arr = format_img("drawn_img.png")
 	image_index = random.randint(0, len(test_images))
 	plt.grid(False)
@@ -92,7 +92,7 @@ def main():
 	train_images = train_images / 255
 	test_images = test_images / 255
 
-	# train_model(train_images, train_labels, test_images, test_labels)
+	train_model(train_images, train_labels, test_images, test_labels)
 	model = keras.models.load_model('model')
 
 
